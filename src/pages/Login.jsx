@@ -52,7 +52,7 @@ const Login = () => {
         // if(apiRes.data.code === 200){
         //     console.log(apiRes.message)
         // } 
-        console.log(apiRes.data.code, apiRes.data.message);
+        // console.log(apiRes.data.code, apiRes.data.message);
         if(apiRes.data.code===200){
             const url = `/courses`
             navigate(url)

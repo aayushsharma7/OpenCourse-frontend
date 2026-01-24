@@ -1515,10 +1515,10 @@ const CoursePlayer = () => {
                                             playerInstanceRef.current.currentTime =
                                               Number(item.timestamp);
                                             playerInstanceRef.current.play();
-                                            console.log(
-                                              playerInstanceRef.current
-                                                .currentTime
-                                            );
+                                            // console.log(
+                                            //   playerInstanceRef.current
+                                            //     .currentTime
+                                            // );
                                           }}
                                           className="text-[10px] cursor-pointer font-bold text-[#2563EB] bg-[#2563EB]/10 px-1.5 py-0.5 rounded-md border border-[#2563EB]/20"
                                         >

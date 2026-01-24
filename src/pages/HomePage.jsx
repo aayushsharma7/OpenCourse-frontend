@@ -25,7 +25,7 @@ const HomePage = () => {
       const responsePost = await axios.get(`${import.meta.env.VITE_API_URL}/auth/check`, {
         withCredentials: true,
       });
-      console.log(responsePost.data);
+      // console.log(responsePost.data);
       if (responsePost.data.code === 200) {
         setIsLoggedIn(true);
         setInfor(responsePost.data.info);
@@ -52,7 +52,7 @@ const HomePage = () => {
         setCourses(data.data.reverse());
         const lastPlayed = localStorage.getItem('last_course_played') || "none"
         setLastCoursePlayed(lastPlayed);
-        console.log(data.data);
+        // console.log(data.data);
       }
     } catch (error) {
       console.log(error);
@@ -66,7 +66,7 @@ const HomePage = () => {
   useEffect(() => {
     
     getData();
-    console.log(courses);
+    // console.log(courses);
   }, []);
 
   const navigate = useNavigate();

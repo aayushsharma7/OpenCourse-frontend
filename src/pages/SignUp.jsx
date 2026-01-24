@@ -53,7 +53,7 @@ const SignUp = () => {
         }
         const apiRes = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`,payload);
         setResp(apiRes);
-        console.log(apiRes.data.code, apiRes.data.message);
+        // console.log(apiRes.data.code, apiRes.data.message);
         if(apiRes?.data?.code === 200){
           navigate('/login')
         } 
