@@ -106,7 +106,7 @@ useEffect(() => {
   const fetchUser = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/auth/check",
+        `${import.meta.env.VITE_API_URL}/auth/check`,
         { withCredentials: true }
       );
       setUser(res.data.info);
