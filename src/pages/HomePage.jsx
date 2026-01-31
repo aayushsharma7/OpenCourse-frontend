@@ -19,6 +19,7 @@ const HomePage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [infor, setInfor] = useState({});
   const [lastCoursePlayed, setLastCoursePlayed] = useState("none");
+  const [authLoad, setAuthLoad] = useState(true)
 
   const checkAuth = async () => {
     try {
@@ -38,6 +39,9 @@ const HomePage = () => {
       }
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      setAuthLoad(false);
     }
   };
 
@@ -102,7 +106,7 @@ const HomePage = () => {
   // setLoading(false);
   // },500)
 
-  if (loading)
+  if (loading && authLoad)
     return (
       <div className="flex items-center justify-center min-h-screen selection:bg-[#2563EB] selection:text-black overflow-hidden relative">
         <div
