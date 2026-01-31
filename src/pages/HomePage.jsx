@@ -29,6 +29,9 @@ const HomePage = () => {
       if (responsePost.data.code === 200) {
         setIsLoggedIn(true);
         setInfor(responsePost.data.info);
+        // console.log(responsePost.data.info)
+        const lastPlayed = localStorage.getItem('last_course_played') || responsePost.data.info.lastCoursePlayed;
+        setLastCoursePlayed(lastPlayed);
       } else {
         setIsLoggedIn(false);
         navigate("/signup");
@@ -50,8 +53,8 @@ const HomePage = () => {
       });
       if (data.status === 200) {
         setCourses(data.data.reverse());
-        const lastPlayed = localStorage.getItem('last_course_played') || "none"
-        setLastCoursePlayed(lastPlayed);
+        
+        
         // console.log(data.data);
       }
     } catch (error) {
@@ -74,6 +77,22 @@ const HomePage = () => {
   const goToCourse = (e, n) => {
     navigate(`/courses/${n}/${e}}`);
   };
+
+  const handleLastPlayedCourse = async (courseId) => {
+    try {
+      const apiRes = await axios.post(`${import.meta.env.VITE_API_URL}/course/update/lastplayedcourse`,{
+        courseId
+      },{
+        withCredentials: true
+      });
+
+      // console.log(apiRes.data?.lastplayedId);
+    } catch (error) {
+      console.log(error);
+    } finally{
+      localStorage.setItem(`last_course_played`, `${courseId}`)
+    }
+  }
 
   // const changeUser = () => {
   //     setUser('changed');
@@ -460,7 +479,8 @@ const HomePage = () => {
             <div
               key={idx}
               onClick={() => {
-                localStorage.setItem(`last_course_played`, `${course._id}`)
+                const courseId = course._id
+                handleLastPlayedCourse(courseId)
               }}
               className={`group ${
                 courses.length > 0 ? "" : "hidden"

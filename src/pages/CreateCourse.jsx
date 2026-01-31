@@ -75,14 +75,14 @@ const CreateCourse = () => {
     setLoading(true);
     const res = await backendResponse(payload);
     if (res.status === 409) {
-      // console.log(res.response.data);
+      console.log(res.response.data);
       setStatusCode({
         code: res.status,
         data: res.response.data,
       });
 
     } else if (res.status === 200) {
-      // console.log(res.data);
+      console.log(res.data);
       setStatusCode({
         code: res.status,
         data: res.data,
